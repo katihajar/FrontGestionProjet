@@ -1,0 +1,104 @@
+<div>
+  <main>
+    <section class="relative w-full h-full py-40 min-h-screen">
+      <div
+        class="absolute top-0 w-full h-full bg-blueGray-800 bg-no-repeat bg-full"
+        style="background-image: url('assets/img/register_bg_2.png')"
+      ></div>
+<div class="container mx-auto px-4 h-full">
+  <div class="flex content-center items-center justify-center h-full">
+    <div class="w-full lg:w-4/12 px-4">
+      <div
+        class="relative flex flex-col min-w-0 break-words w-full mb-6 shadow-lg rounded-lg bg-blueGray-200 border-0">
+        <div class="rounded-t mb-0 px-6 py-6">
+          <div class="text-center mb-3">
+            <h6 class="text-blueGray-500 text-sm font-bold">Sign in </h6>
+          </div>
+          <hr class="mt-6 border-b-1 border-blueGray-300" />
+        </div>
+        <div class="flex-auto px-4 lg:px-10 py-10 pt-0">
+
+          <form #monForm=ngForm>
+            <div class="relative w-full mb-3">
+              <label
+                class="block uppercase text-blueGray-600 text-xs font-bold mb-2"
+                htmlFor="grid-password"
+              >
+                Username
+              </label>
+              <input
+                type="text" [(ngModel)]="user.username" #userna="ngModel" name="username"
+                class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
+                placeholder="Username"
+                required="required"
+              />
+            </div>
+            <div [hidden]="userna.valid || userna.pristine">  Le nom est obligatoire</div>
+
+            <div class="relative w-full mb-3">
+              <label
+                class="block uppercase text-blueGray-600 text-xs font-bold mb-2"
+                htmlFor="grid-password"
+              >
+                Password
+              </label>
+              <input
+                required="required"
+                type="password" [(ngModel)]="user.password" #pass1="ngModel" name="password"
+                class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
+                placeholder="Password"
+              />
+            </div>
+            <div [hidden]="pass1.valid || pass1.pristine">  Le nom est obligatoire</div>
+            <div>
+              <label class="inline-flex items-center cursor-pointer">
+                <input
+                  id="customCheckLogin"
+                  type="checkbox"
+                  class="form-checkbox border-0 text-blueGray-700 ml-1 w-5 h-5 ease-linear transition-all duration-150 rounded"
+                />
+                <span class="ml-2 text-sm font-semibold text-blueGray-600">
+                  Remember me
+                </span>
+              </label>
+            </div>
+
+            <div class="text-center mt-6">
+              <button [disabled]=!monForm.valid
+                class="bg-blueGray-800 text-white active:bg-blueGray-600 text-sm font-bold uppercase px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 w-full ease-linear transition-all duration-150"
+                type="button"
+                (click)="SignIn(user.username,user.password)"
+              >
+                Sign In
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+      <div class="flex flex-wrap mt-6 relative">
+        <div class="w-1/2">
+          <a href="javascript:void(0)" class="text-blueGray-200">
+            <small>Forgot password?</small>
+          </a>
+        </div>
+        <div class="w-1/2 text-right">
+          <a [routerLink]="['/auth/register']" class="text-blueGray-200">
+            <small>Create new account</small>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      <router-outlet></router-outlet>
+      <app-footer-small [absolute]="true"></app-footer-small>
+    </section>
+  </main>
+</div>
+<style>
+  .ng-invalid:not(form){  border-left: 5px solid red;
+  }
+  .ng-valid:not(form){  border-left: 5px solid green;
+  }
+
+</style>
