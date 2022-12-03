@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {AuthentificationService} from '../../../controller/service/authentification.service';
 import {User} from '../../../controller/model/user';
 import {Userauth} from '../../../controller/model/userauth';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -11,7 +12,7 @@ export class LoginComponent implements OnInit {
    userName='';
   pass='';
   user: User = new User();
-  constructor(private auth: AuthentificationService) {}
+  constructor(private auth: AuthentificationService,private router: Router) {}
   ngOnInit(): void {}
 
   get User(): User {
@@ -40,6 +41,9 @@ export class LoginComponent implements OnInit {
           console.log('tken: '+ (this.UserAuth.accessToken) );
           console.log('us: '+ JSON.stringify(this.User.role.name) );
          // console.log(this.user.username)
+          if (this.UserAuth.accessToken != null){
+            this.router.navigate(['/admin']);
+          }
         }
       })}
 }

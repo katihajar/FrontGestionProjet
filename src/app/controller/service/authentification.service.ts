@@ -67,7 +67,7 @@ export class AuthentificationService {
     if (token !== null) {
       headers = new HttpHeaders({
         'Content-Type': 'application/json',
-        Authorization: `Bearer ${token}`
+        Authorization: `Bearer ${this.UserAuth.accessToken}`
       });
     }
     return headers;
