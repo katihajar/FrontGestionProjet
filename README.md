@@ -182,7 +182,7 @@ notus-angular
 │   │   │   │   │   └── footer.component.ts
 │   │   │   │   ├── footer-admin
 │   │   │   │   │   ├── footer-admin.component.html
-│   │   │   │   │   └── footer-admin.component.ts
+│   │   │   │   │   └── footer-emp.component.ts
 │   │   │   │   └── footer-small
 │   │   │   │       ├── footer-small.component.html
 │   │   │   │       └── footer-small.component.ts
@@ -206,11 +206,11 @@ notus-angular
 │   │   │   │       └── index-navbar.component.ts
 │   │   │   └── sidebar
 │   │   │       ├── sidebar.component.html
-│   │   │       └── sidebar.component.ts
+│   │   │       └── sidebarEmploy.component.ts
 │   │   ├── layouts
 │   │   │   ├── admin
 │   │   │   │   ├── admin.component.html
-│   │   │   │   └── admin.component.ts
+│   │   │   │   └── emp.component.ts
 │   │   │   └── auth
 │   │   │       ├── auth.component.html
 │   │   │       └── auth.component.ts
@@ -218,7 +218,7 @@ notus-angular
 │   │       ├── admin
 │   │       │   ├── dashboard
 │   │       │   │   ├── dashboard.component.html
-│   │       │   │   └── dashboard.component.ts
+│   │       │   │   └── dashboard2.component.ts
 │   │       │   ├── maps
 │   │       │   │   ├── maps.component.html
 │   │       │   │   └── maps.component.ts

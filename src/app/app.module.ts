@@ -5,7 +5,6 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
 // layouts
-import { AdminComponent } from './layouts/admin/admin.component';
 import { AuthComponent } from './layouts/auth/auth.component';
 
 // admin views
@@ -49,6 +48,10 @@ import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { UserDropdownComponent } from './components/dropdowns/user-dropdown/user-dropdown.component';
 import {FormsModule} from '@angular/forms';
 import {HttpClientModule} from '@angular/common/http';
+import {SidebarEmployComponent} from './components/sidebarEmploy/sidebarEmploy.component';
+import {Dashboard2Component} from './views/Employe/dashboard/dashboard2.component';
+import {EmpComponent} from './layouts/Employe/emp.component';
+import {AdminComponent} from './layouts/admin/admin.component';
 
 @NgModule({
   declarations: [
@@ -86,7 +89,9 @@ import {HttpClientModule} from '@angular/common/http';
     IndexComponent,
     LandingComponent,
     ProfileComponent,
-
+    SidebarEmployComponent,
+    Dashboard2Component,
+    EmpComponent
   ],
   imports: [BrowserModule, AppRoutingModule, FormsModule,HttpClientModule],
   providers: [],

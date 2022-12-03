@@ -42,7 +42,13 @@ export class LoginComponent implements OnInit {
           console.log('us: '+ JSON.stringify(this.User.role.name) );
          // console.log(this.user.username)
           if (this.UserAuth.accessToken != null){
-            this.router.navigate(['/admin']);
+            // tslint:disable-next-line:triple-equals
+            if (this.User.role.name == 'ROLE_DIRECTEUR'){
+              this.router.navigate(['/admin']);
+              // tslint:disable-next-line:triple-equals
+            }else if (this.User.role.name == 'ROLE_EMPLOIYE'){
+              this.router.navigate(['/emp']);
+            }
           }
         }
       })}

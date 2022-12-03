@@ -19,12 +19,24 @@ import { RegisterComponent } from './views/auth/register/register.component';
 import { IndexComponent } from './views/index/index.component';
 import { LandingComponent } from './views/landing/landing.component';
 import { ProfileComponent } from './views/profile/profile.component';
+import {EmpComponent} from './layouts/Employe/emp.component';
 
 const routes: Routes = [
   // admin views
   {
     path: 'admin',
     component: AdminComponent,
+    children: [
+      { path: 'dashboard', component: DashboardComponent },
+      { path: 'settings', component: SettingsComponent },
+      { path: 'tables', component: TablesComponent },
+      { path: 'maps', component: MapsComponent },
+      { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
+    ],
+  },
+  {
+    path: 'emp',
+    component: EmpComponent,
     children: [
       { path: 'dashboard', component: DashboardComponent },
       { path: 'settings', component: SettingsComponent },
