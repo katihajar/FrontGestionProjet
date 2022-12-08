@@ -1,64 +1,58 @@
-import { Component, OnInit } from "@angular/core";
-import { NgForm } from "@angular/forms";
-import { Router } from "@angular/router";
-import { Role } from "src/app/controller/model/role";
-import { Services } from "src/app/controller/model/services";
-import { User } from "src/app/controller/model/user";
-import { AuthentificationService } from "src/app/controller/service/authentification.service";
+import { Component, OnInit } from '@angular/core';
+import { NgForm } from '@angular/forms';
+import { Router } from '@angular/router';
+import { Role } from 'src/app/controller/model/role';
+import { Services } from 'src/app/controller/model/services';
+import { User } from 'src/app/controller/model/user';
+import { AuthentificationService } from 'src/app/controller/service/authentification.service';
 
 @Component({
-  selector: "app-register",
-  templateUrl: "./register.component.html",
+  selector: 'app-register',
+  templateUrl: './register.component.html',
 })
 export class RegisterComponent implements OnInit {
-  user: User;
-
-  role: Role[] = [];
-  roleTable: Role;
-
-  service: Services[] = [];
-  serviceTable: Services;
 
   constructor(
     private authService: AuthentificationService,
     private router: Router
   ) {}
+  get User(): User {
+    return this.authService.User;
+  }
+
+  set User(value: User) {
+    this.authService.User = value;
+  }
+  get ListService(): Array<Services> {
+    return this.authService.ListService;
+  }
+
+  set ListService(value: Array<Services>) {
+    this.authService.ListService = value;
+  }
+  get ListRole(): Array<Role> {
+    return this.authService.ListRole;
+  }
+
+  set ListRole(value: Array<Role>) {
+    this.authService.ListRole = value;
+  }
 
   ngOnInit() {
-    this.authService.getRole().subscribe((resp: Role) => {
-      this.role.push(resp);
-      this.roleTable = this.role[0];
-      console.log("hello 1", this.roleTable);
+    this.authService.getRole().subscribe(data => {
+      this.ListRole=data ;
+      console.log('hello 1', this.ListRole);
     });
 
-    this.authService.getService().subscribe((resp: Services) => {
-      this.service.push(resp);
-      this.serviceTable = this.service[0];
-      console.log("hello", this.serviceTable);
+    this.authService.getService().subscribe(data => {
+      this.ListService = data;
+      console.log('hello 2', this.ListService);
     });
   }
-  signUp(formSignUp: NgForm) {
-    this.user = {
-      username: formSignUp.value.username,
-      email: formSignUp.value.email,
-      password: formSignUp.value.password,
-      phone: formSignUp.value.phone,
-      nom: formSignUp.value.nom,
-      prenom: formSignUp.value.prenom,
-      role: {
-        name: formSignUp.value.name,
-      },
-      services: {
-        nomService: formSignUp.value.nomService,
-      },
-      accountNonExpired: true,
-      credentialsNonExpired: true,
-      accountNonLocked: true,
-      enabled: true,
-    };
-    this.authService.SignUp(this.user).subscribe((response: any) => {
+  signUp() {
+    this.authService.SignUp(this.User).subscribe((response: any) => {
       console.log(response);
+      this.router.navigate(['/login']);
     });
-    this.router.navigate(["/login"]);
   }
 }

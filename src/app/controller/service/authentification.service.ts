@@ -1,21 +1,49 @@
-import { Injectable } from "@angular/core";
-import { User } from "../model/user";
-import { HttpClient, HttpHeaders, HttpResponse } from "@angular/common/http";
-import { Observable } from "rxjs";
-import { environment } from "../../../environments/environment";
-import { tokenReference } from "@angular/compiler";
-import { Userauth } from "../model/userauth";
+import { Injectable } from '@angular/core';
+import { User } from '../model/user';
+import { HttpClient, HttpHeaders, HttpResponse } from '@angular/common/http';
+import { Observable } from 'rxjs';
+import { environment } from '../../../environments/environment';
+import { tokenReference } from '@angular/compiler';
+import { Userauth } from '../model/userauth';
+import {Services} from '../model/services';
+import {Role} from '../model/role';
 
 @Injectable({
-  providedIn: "root",
+  providedIn: 'root',
 })
 export class AuthentificationService {
   private url = environment.baseUrl;
   private _User: User;
   private _authUs: Userauth;
   private _ListUser: Array<User>;
+  private _ListRole: Array<Role>;
+  private _ListService: Array<Services>;
   private _submitted: boolean;
   constructor(private http: HttpClient) {}
+
+
+  get ListRole(): Array<Role> {
+    if (this._ListRole == null) {
+      this._ListRole = new Array<Role>();
+    }
+    return this._ListRole;
+  }
+
+  set ListRole(value: Array<Role>) {
+    this._ListRole = value;
+  }
+
+  get ListService(): Array<Services> {
+    if (this._ListService == null) {
+      this._ListService = new Array<Services>();
+    }
+    return this._ListService;
+  }
+
+  set ListService(value: Array<Services>) {
+    this._ListService = value;
+  }
+
   get submitted(): boolean {
     return this._submitted;
   }
@@ -60,29 +88,29 @@ export class AuthentificationService {
   public Login(user: string, pass: string): Observable<HttpResponse<Userauth>> {
     const headers: HttpHeaders = this.initHeaders();
     return this.http.post<Userauth>(
-      this.url + "api/auth/login",
+      this.url + 'api/auth/login',
       { username: user, password: pass },
-      { observe: "response", headers }
+      { observe: 'response', headers }
     );
   }
   initHeaders(): HttpHeaders {
     let headers = new HttpHeaders();
-    const token = localStorage.getItem("accessToken");
+    const token = localStorage.getItem('accessToken');
     if (token !== null) {
       headers = new HttpHeaders({
-        "Content-Type": "application/json",
+        'Content-Type': 'application/json',
         Authorization: `Bearer ${this.UserAuth.accessToken}`,
       });
     }
     return headers;
   }
   SignUp(userToRegister: User) {
-    return this.http.post(this.url + "api/auth/signup", userToRegister);
+    return this.http.post(this.url + 'api/auth/signup', userToRegister);
   }
-  getRole() {
-    return this.http.get(this.url + "api/role/allRoles");
-  }
-  getService() {
-    return this.http.get(this.url + "api/service/all");
+  getService(): Observable<Array<Services>> {
+  return this.http.get<Array<Services>>(this.url + 'api/service/all');
+}
+  getRole(): Observable<Array<Role>> {
+    return this.http.get<Array<Role>>(this.url + 'api/role/allRoles');
   }
 }

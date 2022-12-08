@@ -37,7 +37,7 @@
           <div class="text-blueGray-400 text-center mb-3 font-bold">
             <small>Or sign up with credentials</small>
           </div>
-          <form #formSignUp='ngForm' (ngSubmit)="signUp(formSignUp)">
+          <form #formSignUp='ngForm' (ngSubmit)="signUp()">
             <div class="relative w-full mb-3">
               <label
                 class="block uppercase text-blueGray-600 text-xs font-bold mb-2"
@@ -48,6 +48,7 @@
               <input
               id="username"
               name="username"
+              [(ngModel)]="User.username"
               ngModel required #username="ngModel"
                 type="text"
                 class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
@@ -65,6 +66,7 @@
               <input
               id="email"
               name="email"
+              [(ngModel)]="User.email"
               ngModel required #email="ngModel"
                 type="email"
                 class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
@@ -82,6 +84,7 @@
               <input
               id="password"
               name="password"
+              [(ngModel)]="User.password"
               ngModel required #password="ngModel"
                 type="password"
                 class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
@@ -100,6 +103,7 @@
               <input
               id="phone"
               name="phone"
+              [(ngModel)]="User.phone"
               ngModel required #phone="ngModel"
                 type="text"
                 class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
@@ -117,6 +121,7 @@
               <input
               id="nom"
               name="nom"
+              [(ngModel)]="User.nom"
               ngModel required #nom="ngModel"
                 type="text"
                 class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
@@ -135,6 +140,7 @@
               <input
               id="prenom"
               name="prenom"
+              [(ngModel)]="User.prenom"
               ngModel required #prenom="ngModel"
                 type="text"
                 class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
@@ -149,10 +155,10 @@
               >
                 Role
               </label>
-              <select class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150" id="role" name="role" placeholder="Role">          
-              <option *ngFor="let role of roleTable">
-                {{role.name}}
-              </option>
+              <select [(ngModel)]="User.role"  class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150" id="role" name="role" placeholder="Role">
+                <option *ngFor="let role of ListRole" [ngValue]="role">
+                  {{role.name}}
+                </option>
               </select>
             </div>
 
@@ -164,10 +170,10 @@
               >
                 Service
               </label>
-              <select class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150" id="service" name="service" placeholder="Service">          
-              <option *ngFor="let service of serviceTable">
-                {{service.nomService}}
-              </option>
+              <select [(ngModel)]="User.services"  class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150" id="service" name="service" placeholder="Service">
+                <option *ngFor="let service of ListService" [ngValue]="service">
+                  {{service.nomService}}
+                </option>
               </select>
             </div>
 
