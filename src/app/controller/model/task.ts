@@ -1,13 +1,15 @@
 import {User} from './user';
+import {Project} from './project';
 
-export class Project {
+export class Task {
   public id?: string;
-  public nomProjet: string;
-  public description: string;
+  public nom: string;
+  public taskDescription: string;
   public statutChef: string;
   public statutDirect: string;
-  public cout: number;
+  public pourcentage: number;
   public dateDebut = new Date().getFullYear()+'-'+new Date().getMonth()+'-'+ new Date().getDay();
   public dateFin= new Date().getFullYear()+'-'+new Date().getMonth()+'-'+ new Date().getDay();
-  public user= new User();
+
+  public project= new Project();
 }

@@ -52,7 +52,10 @@ import {SidebarEmployComponent} from './components/sidebarEmploy/sidebarEmploy.c
 import {Dashboard2Component} from './views/Employe/dashboard/dashboard2.component';
 import {EmpComponent} from './layouts/Employe/emp.component';
 import {AdminComponent} from './layouts/admin/admin.component';
-
+import { ListServiceProjectComponent } from './views/Employe/list-service-project/list-service-project.component';
+import { ListAllTaskComponent } from './views/Employe/list-all-task/list-all-task.component';
+import { ListUserProjectTaskComponent } from './views/Employe/list-user-project-task/list-user-project-task.component';
+import { ListUserProjectComponent } from './views/Employe/list-user-project/list-user-project.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -91,7 +94,11 @@ import {AdminComponent} from './layouts/admin/admin.component';
     ProfileComponent,
     SidebarEmployComponent,
     Dashboard2Component,
-    EmpComponent
+    EmpComponent,
+    ListServiceProjectComponent,
+    ListAllTaskComponent,
+    ListUserProjectTaskComponent,
+    ListUserProjectComponent
   ],
   imports: [BrowserModule, AppRoutingModule, FormsModule,HttpClientModule],
   providers: [],

@@ -1,0 +1,148 @@
+<div class="flex flex-wrap mt-4">
+  <div class="w-full mb-12 px-4">
+    <div
+      class="relative flex flex-col min-w-0 break-words w-full mb-6 shadow-lg rounded"
+      [ngClass]="color === 'light' ? 'bg-white' : 'bg-red-900 text-white'"
+    >
+      <div class="rounded-t mb-0 px-4 py-3 border-0">
+        <div class="flex flex-wrap items-center">
+          <div class="relative w-full px-4 max-w-full flex-grow flex-1">
+            <h3
+              class="font-semibold text-lg"
+              [ngClass]="color === 'light' ? 'text-blueGray-700' : 'text-white'"
+            >
+              Card Tables
+            </h3>
+          </div>
+        </div>
+      </div>
+      <div class="block w-full overflow-x-auto">
+        <!-- Projects table -->
+        <table class="items-center w-full bg-transparent border-collapse">
+          <thead>
+          <tr>
+            <th
+              class="px-6 align-middle border border-solid py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left"
+              [ngClass]="
+              color === 'light'
+                ? 'bg-blueGray-50 text-blueGray-500 border-blueGray-100'
+                : 'bg-red-800 text-red-300 border-red-700'
+            "
+            >
+              Task
+            </th>
+            <th
+              class="px-6 align-middle border border-solid py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left"
+              [ngClass]="
+              color === 'light'
+                ? 'bg-blueGray-50 text-blueGray-500 border-blueGray-100'
+                : 'bg-red-800 text-red-300 border-red-700'
+            "
+            >
+              Description
+            </th>
+            <th
+              class="px-6 align-middle border border-solid py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left"
+              [ngClass]="
+              color === 'light'
+                ? 'bg-blueGray-50 text-blueGray-500 border-blueGray-100'
+                : 'bg-red-800 text-red-300 border-red-700'
+            "
+            >
+              Start Date
+            </th>
+            <th
+              class="px-6 align-middle border border-solid py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left"
+              [ngClass]="
+              color === 'light'
+                ? 'bg-blueGray-50 text-blueGray-500 border-blueGray-100'
+                : 'bg-red-800 text-red-300 border-red-700'
+            "
+            >
+              End date
+            </th>
+            <th
+              class="px-6 align-middle border border-solid py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left"
+              [ngClass]="
+              color === 'light'
+                ? 'bg-blueGray-50 text-blueGray-500 border-blueGray-100'
+                : 'bg-red-800 text-red-300 border-red-700'
+            "
+            >
+              Status Chef
+            </th>
+
+            <th
+              class="px-6 align-middle border border-solid py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left"
+              [ngClass]="
+              color === 'light'
+                ? 'bg-blueGray-50 text-blueGray-500 border-blueGray-100'
+                : 'bg-red-800 text-red-300 border-red-700'
+            "
+            >Status Directeur</th>
+            <th
+              class="px-6 align-middle border border-solid py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left"
+              [ngClass]="
+              color === 'light'
+                ? 'bg-blueGray-50 text-blueGray-500 border-blueGray-100'
+                : 'bg-red-800 text-red-300 border-red-700'
+            "
+            >pourcentage</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr *ngFor="let task of ListUserTask">
+            <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">{{task.nom}} </td>
+            <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">{{task.taskDescription}}</td>
+            <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
+              {{task.dateDebut}}
+            </td>
+            <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
+
+              {{task.dateFin}}
+            </td>
+            <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4"><i *ngIf="task.statutChef=='accepte'" class="fas fa-circle text-teal-500 mr-2"></i> <i *ngIf="task.statutChef=='en attente'"  class="fas fa-circle text-orange-500 mr-2"></i> <i *ngIf="task.statutChef=='refuse'" class="fas fa-circle text-red-500 mr-2"></i>  {{task.statutChef}}</td>
+            <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4"> <i *ngIf="task.statutDirect=='accepte'" class="fas fa-circle text-teal-500 mr-2"></i> <i *ngIf="task.statutDirect=='en attente'"  class="fas fa-circle text-orange-500 mr-2"></i> <i *ngIf="task.statutDirect=='refuse'" class="fas fa-circle text-red-500 mr-2"></i>  {{task.statutDirect}}</td>
+            <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4"> <div class="flex items-center">
+              <span class="mr-2">{{task.pourcentage}}%</span>
+              <div class="relative w-full" *ngIf="task.pourcentage<70 && task.pourcentage>=40">
+                <div
+                  class="overflow-hidden h-2 text-xs flex rounded bg-orange-200"
+                >
+                  <div
+                    [ngStyle]="{'width': task.pourcentage+'%'}"
+                    class="shadow-none flex flex-col text-center whitespace-nowrap text-white justify-center bg-orange-500"
+                  ></div>
+                </div>
+              </div>
+              <div class="relative w-full" *ngIf="task.pourcentage>=70">
+                <div
+                  class="overflow-hidden h-2 text-xs flex rounded bg-emerald-200"
+                >
+                  <div
+                    [ngStyle]="{'width': task.pourcentage+'%'}"
+                    class="shadow-none flex flex-col text-center whitespace-nowrap text-white justify-center bg-emerald-500"
+                  ></div>
+                </div>
+              </div>
+              <div class="relative w-full" *ngIf="task.pourcentage<40">
+                <div
+                  class="overflow-hidden h-2 text-xs flex rounded bg-red-200"
+                >
+                  <div
+                    [ngStyle]="{'width': task.pourcentage+'%'}"
+                    class="shadow-none flex flex-col text-center whitespace-nowrap text-white justify-center bg-red-200"
+                  ></div>
+                </div>
+              </div>
+            </div>
+            </td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+  </div>
+
+</div>

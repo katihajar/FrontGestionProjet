@@ -20,6 +20,10 @@ import { IndexComponent } from './views/index/index.component';
 import { LandingComponent } from './views/landing/landing.component';
 import { ProfileComponent } from './views/profile/profile.component';
 import {EmpComponent} from './layouts/Employe/emp.component';
+import {ListServiceProjectComponent} from './views/Employe/list-service-project/list-service-project.component';
+import {ListAllTaskComponent} from './views/Employe/list-all-task/list-all-task.component';
+import {ListUserProjectComponent} from './views/Employe/list-user-project/list-user-project.component';
+import {ListUserProjectTaskComponent} from './views/Employe/list-user-project-task/list-user-project-task.component';
 
 const routes: Routes = [
   // admin views
@@ -39,6 +43,10 @@ const routes: Routes = [
     component: EmpComponent,
     children: [
       { path: 'dashboard', component: DashboardComponent },
+      { path: 'serviceProject', component: ListServiceProjectComponent },
+      { path: 'projectTask', component: ListAllTaskComponent },
+      { path: 'myProject', component: ListUserProjectComponent },
+      { path: 'myprojectTask', component: ListUserProjectTaskComponent },
       { path: 'settings', component: SettingsComponent },
       { path: 'tables', component: TablesComponent },
       { path: 'maps', component: MapsComponent },
