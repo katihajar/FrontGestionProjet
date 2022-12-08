@@ -24,6 +24,7 @@ import {ListServiceProjectComponent} from './views/Employe/list-service-project/
 import {ListAllTaskComponent} from './views/Employe/list-all-task/list-all-task.component';
 import {ListUserProjectComponent} from './views/Employe/list-user-project/list-user-project.component';
 import {ListUserProjectTaskComponent} from './views/Employe/list-user-project-task/list-user-project-task.component';
+import {AddProjectComponent} from './views/Employe/add-project/add-project.component';
 
 const routes: Routes = [
   // admin views
@@ -42,15 +43,15 @@ const routes: Routes = [
     path: 'emp',
     component: EmpComponent,
     children: [
-      { path: 'dashboard', component: DashboardComponent },
       { path: 'serviceProject', component: ListServiceProjectComponent },
       { path: 'projectTask', component: ListAllTaskComponent },
       { path: 'myProject', component: ListUserProjectComponent },
+      { path: 'addProject', component: AddProjectComponent },
       { path: 'myprojectTask', component: ListUserProjectTaskComponent },
       { path: 'settings', component: SettingsComponent },
       { path: 'tables', component: TablesComponent },
       { path: 'maps', component: MapsComponent },
-      { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
+      { path: '', redirectTo: 'serviceProject', pathMatch: 'full' },
     ],
   },
   // no layout views

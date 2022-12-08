@@ -1,18 +1,135 @@
+<div style="width: 100%;justify-content: center;align-items: center;" *ngIf="showModal" class="overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none justify-center items-center flex">
+  <div class="relative w-auto my-6 mx-auto max-w-sm lg:w-6/12 justify-center" style="margin-left: 15%">
+    <!--content-->
+    <div class="border-0 rounded-lg shadow-lg relative flex flex-col w-full bg-white outline-none focus:outline-none">
+      <!--header-->
+      <div class="flex items-start justify-between rounded p-2 border-b border-solid " style="background-color: #d92930">
+        <h3 class="text-3xl font-semibold">
+          Add new Task
+        </h3>
+        <button class="p-1 ml-auto bg-transparent border-0 text-black opacity-5 float-right text-3xl leading-none font-semibold outline-none focus:outline-none" (click)="toggleModal()">
+          <span class="bg-transparent text-black opacity-5 h-6 w-6 text-2xl block outline-none focus:outline-none">
+            ×
+          </span>
+        </button>
+      </div>
+      <!--body-->
+      <div class="relative p-6 flex-auto ">
+        <div style="width: 100%">
+          <div
+            class="relative flex flex-col min-w-0 break-words w-full mb-6 shadow-lg 0" style="margin-top: 2%;margin-bottom: 0">
+
+            <div class="flex-auto px-4 lg:px-10 py-10 pt-0">
+
+              <form #monForm1=ngForm>
+                <div class="relative w-full mb-3">
+                  <label
+                    class="block uppercase text-blueGray-600 text-xs font-bold mb-2"
+                    htmlFor="grid-password"
+                  >
+                    Task Name
+                  </label>
+                  <input
+                    type="text" name="name"
+                    [(ngModel)]="selectedTask.nom"
+                    class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
+                    placeholder="Name"
+                    required="required"
+                  />
+                </div>
+                <div class="relative w-full mb-3">
+                  <label
+                    class="block uppercase text-blueGray-600 text-xs font-bold mb-2"
+                    htmlFor="grid-password"
+                  >
+                    Task Description
+                  </label>
+                  <input
+                    [(ngModel)]="selectedTask.taskDescription"
+                    type="text"  name="description"
+                    class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
+                    placeholder="Description"
+                    required="required"
+                  />
+                </div>
+
+
+                <div class="relative w-full mb-3">
+                  <label
+                    class="block uppercase text-blueGray-600 text-xs font-bold mb-2"
+                    htmlFor="grid-password"
+                  >
+                    Start Date
+                  </label>
+                  <input
+                    required="required"
+                    [(ngModel)]="selectedTask.dateDebut"
+                    type="date"  name="dateDebut"
+                    class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
+                    placeholder="Start Date"
+                  />
+                </div>
+                <div class="relative w-full mb-3">
+                  <label
+                    class="block uppercase text-blueGray-600 text-xs font-bold mb-2"
+                    htmlFor="grid-password"
+                  >
+                    End Date
+                  </label>
+                  <input
+                    [(ngModel)]="selectedTask.dateFin"
+                    required="required"
+                    type="date"  name="dateFin"
+                    class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
+                    placeholder="End Date"
+                  />
+                </div>
+
+
+
+
+              </form>
+            </div>
+          </div>
+
+        </div>
+      </div>
+      <!--footer-->
+      <div class="flex items-center justify-end p-6 border-t border-solid border-blueGray-200 rounded-b" style="margin-right: 2%">
+        <button style="margin-top: 1%" class="text-red-500 background-transparent font-bold uppercase px-6 py-2 text-sm outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150" type="button" (click)="toggleModal()">
+          Close
+        </button>
+        <button style="margin-top: 1%" class="bg-emerald-500 text-white active:bg-emerald-600 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150" type="button" (click)="addTask()">
+          Save Changes
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+<div style="width: 100%;justify-content: center;align-items: center"  *ngIf="showModal" class="opacity-25 fixed inset-0 z-40 bg-black"></div>
+
 <div class="flex flex-wrap mt-4">
+
   <div class="w-full mb-12 px-4">
+
     <div
       class="relative flex flex-col min-w-0 break-words w-full mb-6 shadow-lg rounded"
       [ngClass]="color === 'light' ? 'bg-white' : 'bg-red-900 text-white'"
     >
       <div class="rounded-t mb-0 px-4 py-3 border-0">
         <div class="flex flex-wrap items-center">
-          <div class="relative w-full px-4 max-w-full flex-grow flex-1">
-            <h3
-              class="font-semibold text-lg"
-              [ngClass]="color === 'light' ? 'text-blueGray-700' : 'text-white'"
+          <div class="-ms-flexbox w-full flex-col inline-block" style=" -ms-flex-direction: column;flex-direction: column; padding-left: 0;  margin-bottom: 0">
+            <h3 style="float: left;"
+                class="font-semibold text-lg relative"
+                [ngClass]="color === 'light' ? 'text-blueGray-700' : 'text-white'"
             >
               Card Tables
             </h3>
+            <button style="float: right "
+                    class="bg-lightBlue-600 relative active:bg-red-700 uppercase text-white font-bold hover:shadow-md shadow text-xs px-3 py-2 rounded "
+                    type="button" (click)="toggleModal()"
+            > <i class="fas fa-plus"> Add new Task</i>
+            </button>
           </div>
         </div>
       </div>

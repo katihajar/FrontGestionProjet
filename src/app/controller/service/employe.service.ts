@@ -22,8 +22,20 @@ export class EmployeService {
   private _ListUserProject:Array<Project>;
   private _ListUserTask:Array<Task>;
   private _selectedProject:Project;
+  private _selectedTask:Task;
   private _submitted: boolean;
   constructor(private http: HttpClient,private auth: AuthentificationService) {}
+
+  get selectedTask(): Task {
+    if (this._selectedTask == null) {
+      this._selectedTask = new Task();
+    }
+    return this._selectedTask;
+  }
+
+  set selectedTask(value: Task) {
+    this._selectedTask = value;
+  }
 
   get ListUserTask(): Array<Task> {
     if (this._ListUserTask == null) {
@@ -108,6 +120,14 @@ export class EmployeService {
   getTaskProject(id:string): Observable<HttpResponse<Array<Task>>> {
     const headers: HttpHeaders = this.initHeaders();
     return this.http.get<Array<Task>>(this.url + 'api/task/ProjectId/'+id,{ observe: 'response', headers });
+  }
+  saveProject(): Observable<HttpResponse<Project>> {
+    const headers: HttpHeaders = this.initHeaders();
+    return this.http.post<Project>(this.url + 'api/project/',this.selectedProject,{ observe: 'response', headers });
+  }
+  saveTask(): Observable<HttpResponse<Task>> {
+    const headers: HttpHeaders = this.initHeaders();
+    return this.http.post<Task>(this.url + 'api/task/',this.selectedTask,{ observe: 'response', headers });
   }
   initHeaders(): HttpHeaders {
     let headers = new HttpHeaders();

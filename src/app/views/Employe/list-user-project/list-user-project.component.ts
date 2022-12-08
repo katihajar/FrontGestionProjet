@@ -10,7 +10,7 @@ import {Task} from '../../../controller/model/task';
   styleUrls: ['./list-user-project.component.css']
 })
 export class ListUserProjectComponent implements OnInit {
-
+  showModal = false;
   @Input()
   get color(): string {
     return this._color;
@@ -20,6 +20,13 @@ export class ListUserProjectComponent implements OnInit {
   }
   private _color = 'light';
   constructor(private emp:EmployeService,private router: Router) {}
+
+  public add(){
+    this.router.navigate(['/emp/addProject']);
+  }
+  toggleModal(){
+    this.showModal = !this.showModal;
+  }
   get ListUserProject(): Array<Project> {
     return this.emp.ListUserProject;
   }
@@ -42,8 +49,9 @@ export class ListUserProjectComponent implements OnInit {
     this.emp.ListUserTask = value;
   }
 
-  public seeTask(id:string){
-    this.emp.getTaskProject(id).subscribe(data=>{
+  public seeTask(p:Project){
+    this.selectedProject = p;
+    this.emp.getTaskProject(p.id).subscribe(data=>{
       this.ListUserTask=data.body;
       console.log( 'first'+ this.ListUserTask);
       this.router.navigate(['/emp/myprojectTask']);
@@ -52,7 +60,7 @@ export class ListUserProjectComponent implements OnInit {
   ngOnInit() {
     this.emp.getEmployeProject().subscribe(data=>{
       this.ListUserProject=data.body;
-      console.log(data);
+      console.log(this.ListUserProject);
     })
   }
 
