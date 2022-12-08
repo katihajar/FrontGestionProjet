@@ -95,11 +95,11 @@
             <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">{{task.nom}} </td>
             <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">{{task.taskDescription}}</td>
             <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
-              {{task.dateDebut}}
+              {{task.dateDebut | date:'d MMM Y'}}
             </td>
             <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
 
-              {{task.dateFin}}
+              {{task.dateFin | date:'d MMM Y'}}
             </td>
             <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4"><i *ngIf="task.statutChef=='accepte'" class="fas fa-circle text-teal-500 mr-2"></i> <i *ngIf="task.statutChef=='en attente'"  class="fas fa-circle text-orange-500 mr-2"></i> <i *ngIf="task.statutChef=='refuse'" class="fas fa-circle text-red-500 mr-2"></i>  {{task.statutChef}}</td>
             <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4"> <i *ngIf="task.statutDirect=='accepte'" class="fas fa-circle text-teal-500 mr-2"></i> <i *ngIf="task.statutDirect=='en attente'"  class="fas fa-circle text-orange-500 mr-2"></i> <i *ngIf="task.statutDirect=='refuse'" class="fas fa-circle text-red-500 mr-2"></i>  {{task.statutDirect}}</td>
