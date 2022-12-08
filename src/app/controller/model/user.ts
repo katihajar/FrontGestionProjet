@@ -14,8 +14,7 @@ export class User {
   public accountNonLocked = true;
   public enabled = true;
   public authorities ?: [];
-
-    role : Role;
-   services:Services;
+  public role = new Role();
+  public services= new Services();
 
 }
