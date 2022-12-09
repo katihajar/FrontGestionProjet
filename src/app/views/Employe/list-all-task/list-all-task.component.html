@@ -11,7 +11,7 @@
               class="font-semibold text-lg"
               [ngClass]="color === 'light' ? 'text-blueGray-700' : 'text-white'"
             >
-              Card Tables
+              List of Task
             </h3>
           </div>
         </div>
@@ -88,12 +88,20 @@
                 : 'bg-red-800 text-red-300 border-red-700'
             "
             >pourcentage</th>
+            <th
+              class="px-6 align-middle border border-solid py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left"
+              [ngClass]="
+              color === 'light'
+                ? 'bg-blueGray-50 text-blueGray-500 border-blueGray-100'
+                : 'bg-red-800 text-red-300 border-red-700'
+            "
+            >see comment</th>
           </tr>
           </thead>
           <tbody>
           <tr *ngFor="let task of ListTask">
             <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">{{task.nom}} </td>
-            <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">{{task.taskDescription}}</td>
+            <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs ts p-4">{{task.taskDescription}}</td>
             <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
               {{task.dateDebut | date:'d MMM Y'}}
             </td>
@@ -136,7 +144,14 @@
                 </div>
               </div>
             </div>
-            </td>
+            </td >
+            <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4"><button
+              (click)="seeComment(task)"
+              class="bg-blueGray-600 active:bg-red-700 uppercase text-white font-bold hover:shadow-md shadow text-xs px-4 py-2 rounded "
+              type="button"
+            >
+              <i class="fas fa-search"></i>
+            </button></td>
           </tr>
           </tbody>
         </table>

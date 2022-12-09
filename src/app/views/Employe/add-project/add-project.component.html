@@ -269,9 +269,9 @@
               </thead>
               <tbody>
               <tr *ngFor="let task of ListAddTask">
-                <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">{{task.nom}} </td>
-                <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 block" > {{task.taskDescription}}</td>
-                <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
+                <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs st p-4">{{task.nom}} </td>
+                <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs  p-4 st" > {{task.taskDescription}}</td>
+                <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs st p-4">
                   {{task.dateDebut | date:'d MMM Y'}}
                 </td>
                 <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
@@ -312,6 +312,7 @@
                   </div>
                 </div>
                 </td>
+
               </tr>
               </tbody>
             </table>

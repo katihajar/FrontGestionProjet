@@ -57,6 +57,7 @@ import { ListAllTaskComponent } from './views/Employe/list-all-task/list-all-tas
 import { ListUserProjectTaskComponent } from './views/Employe/list-user-project-task/list-user-project-task.component';
 import { ListUserProjectComponent } from './views/Employe/list-user-project/list-user-project.component';
 import { AddProjectComponent } from './views/Employe/add-project/add-project.component';
+import { ListCommentComponent } from './views/Employe/list-comment/list-comment.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -100,7 +101,8 @@ import { AddProjectComponent } from './views/Employe/add-project/add-project.com
     ListAllTaskComponent,
     ListUserProjectTaskComponent,
     ListUserProjectComponent,
-    AddProjectComponent
+    AddProjectComponent,
+    ListCommentComponent
   ],
   imports: [BrowserModule, AppRoutingModule, FormsModule,HttpClientModule],
   providers: [],

@@ -30,7 +30,7 @@
             <button style="margin-top: 1%" class="text-red-500 background-transparent font-bold uppercase px-6 py-2 text-sm outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150" type="button" (click)="toggleModal()">
               Close
             </button>
-            <button style="margin-top: 1%" class="bg-emerald-500 text-white active:bg-emerald-600 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150" type="button" (click)="toggleModal()">
+            <button style="margin-top: 1%" class="bg-lightBlue-600 text-white active:bg-emerald-600 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150" type="button" (click)="toggleModal()">
               Save Changes
             </button>
           </div>
@@ -50,7 +50,7 @@
               class="font-semibold text-lg relative"
               [ngClass]="color === 'light' ? 'text-blueGray-700' : 'text-white'"
             >
-              Card Tables
+              List of User Project
             </h3>
             <button style="float: right "
               class="bg-lightBlue-600 relative active:bg-red-700 uppercase text-white font-bold hover:shadow-md shadow text-xs px-3 py-2 rounded "
@@ -130,11 +130,11 @@
           <tr *ngFor="let project of ListUserProject">
             <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">{{project.nomProjet}} </td>
             <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">{{project.cout}}</td>
-            <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
+            <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs ts p-4" >
 
               {{project.description}}
             </td>
-            <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4"><i *ngIf="project.statutChef=='accepte'" class="fas fa-circle text-teal-500 mr-2"></i> <i *ngIf="project.statutChef=='en attente'"  class="fas fa-circle text-orange-500 mr-2"></i> <i *ngIf="project.statutChef=='refuse'" class="fas fa-circle text-red-500 mr-2"></i>  {{project.statutChef}}</td>
+            <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 "><i *ngIf="project.statutChef=='accepte'" class="fas fa-circle text-teal-500 mr-2"></i> <i *ngIf="project.statutChef=='en attente'"  class="fas fa-circle text-orange-500 mr-2"></i> <i *ngIf="project.statutChef=='refuse'" class="fas fa-circle text-red-500 mr-2"></i>  {{project.statutChef}}</td>
             <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4"> <i *ngIf="project.statutDirect=='accepte'" class="fas fa-circle text-teal-500 mr-2"></i> <i *ngIf="project.statutDirect=='en attente'"  class="fas fa-circle text-orange-500 mr-2"></i> <i *ngIf="project.statutDirect=='refuse'" class="fas fa-circle text-red-500 mr-2"></i>  {{project.statutDirect}}</td>
             <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
               <button

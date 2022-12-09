@@ -11,7 +11,7 @@
               class="font-semibold text-lg"
               [ngClass]="color === 'light' ? 'text-blueGray-700' : 'text-white'"
             >
-              Card Tables
+              List of Project
             </h3>
           </div>
         </div>
@@ -86,7 +86,7 @@
           <tr *ngFor="let project of ListProject">
             <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">{{project.nomProjet}} </td>
             <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">{{project.cout}}</td>
-            <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
+            <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs ts p-4">
 
               {{project.description}}
             </td>

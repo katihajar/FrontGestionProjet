@@ -25,6 +25,7 @@ import {ListAllTaskComponent} from './views/Employe/list-all-task/list-all-task.
 import {ListUserProjectComponent} from './views/Employe/list-user-project/list-user-project.component';
 import {ListUserProjectTaskComponent} from './views/Employe/list-user-project-task/list-user-project-task.component';
 import {AddProjectComponent} from './views/Employe/add-project/add-project.component';
+import {ListCommentComponent} from './views/Employe/list-comment/list-comment.component';
 
 const routes: Routes = [
   // admin views
@@ -48,6 +49,7 @@ const routes: Routes = [
       { path: 'myProject', component: ListUserProjectComponent },
       { path: 'addProject', component: AddProjectComponent },
       { path: 'myprojectTask', component: ListUserProjectTaskComponent },
+      { path: 'listComment', component: ListCommentComponent },
       { path: 'settings', component: SettingsComponent },
       { path: 'tables', component: TablesComponent },
       { path: 'maps', component: MapsComponent },

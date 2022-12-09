@@ -9,6 +9,7 @@ import {AuthentificationService} from './authentification.service';
 import {User} from '../model/user';
 import {Userauth} from '../model/userauth';
 import {Task} from '../model/task';
+import {Comment} from '../model/comment';
 
 @Injectable({
   providedIn: 'root'
@@ -23,8 +24,32 @@ export class EmployeService {
   private _ListUserTask:Array<Task>;
   private _selectedProject:Project;
   private _selectedTask:Task;
+  private _selectedComment:Comment;
+  private _ListComment: Array<Comment>;
   private _submitted: boolean;
   constructor(private http: HttpClient,private auth: AuthentificationService) {}
+
+  get ListComment(): Array<Comment> {
+    if (this._ListComment == null) {
+      this._ListComment = new Array<Comment>();
+    }
+    return this._ListComment;
+  }
+
+  set ListComment(value: Array<Comment>) {
+    this._ListComment = value;
+  }
+
+  get selectedComment(): Comment {
+    if (this._selectedComment == null) {
+      this._selectedComment = new Comment();
+    }
+    return this._selectedComment;
+  }
+
+  set selectedComment(value: Comment) {
+    this._selectedComment = value;
+  }
 
   get selectedTask(): Task {
     if (this._selectedTask == null) {
@@ -121,6 +146,10 @@ export class EmployeService {
     const headers: HttpHeaders = this.initHeaders();
     return this.http.get<Array<Task>>(this.url + 'api/task/ProjectId/'+id,{ observe: 'response', headers });
   }
+  getCommentTask(id:string): Observable<HttpResponse<Array<Comment>>> {
+    const headers: HttpHeaders = this.initHeaders();
+    return this.http.get<Array<Comment>>(this.url + 'api/comment/id/'+id,{ observe: 'response', headers });
+  }
   saveProject(): Observable<HttpResponse<Project>> {
     const headers: HttpHeaders = this.initHeaders();
     return this.http.post<Project>(this.url + 'api/project/',this.selectedProject,{ observe: 'response', headers });
@@ -128,6 +157,15 @@ export class EmployeService {
   saveTask(): Observable<HttpResponse<Task>> {
     const headers: HttpHeaders = this.initHeaders();
     return this.http.post<Task>(this.url + 'api/task/',this.selectedTask,{ observe: 'response', headers });
+  }
+  saveComment(): Observable<HttpResponse<Comment>> {
+    const headers: HttpHeaders = this.initHeaders();
+    console.log('medwd'+this.selectedComment);
+    return this.http.post<Comment>(this.url + 'api/comment/',this.selectedComment,{ observe: 'response', headers });
+  }
+  editPourcentage(): Observable<HttpResponse<Task>> {
+    const headers: HttpHeaders = this.initHeaders();
+    return this.http.put<Task>(this.url + 'api/task/hna',this.selectedTask,{ observe: 'response', headers });
   }
   initHeaders(): HttpHeaders {
     let headers = new HttpHeaders();

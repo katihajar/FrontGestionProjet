@@ -28,6 +28,7 @@ export class AddProjectComponent implements OnInit {
   private _color = 'light';
   constructor(private auth: AuthentificationService,private router: Router,private emp:EmployeService) {}
   ngOnInit(): void {
+    this.selectedProject= new Project();
     this._color = 'light';
     this.task.pourcentage=0;
   }
@@ -68,6 +69,7 @@ export class AddProjectComponent implements OnInit {
     this.emp.saveProject().subscribe(
       data => {
         if (data != null) {
+          this.selectedProject= new Project();
           this.router.navigate(['/emp/myProject']);
         }
       })
