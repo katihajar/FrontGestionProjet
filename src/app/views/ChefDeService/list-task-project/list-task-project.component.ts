@@ -1,4 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { Project } from 'src/app/controller/model/project';
+import { Task } from 'src/app/controller/model/task';
+import { ChefDeServiceService } from 'src/app/controller/service/chefDeService.service';
 
 @Component({
   selector: 'app-list-task-project',
@@ -7,9 +10,41 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ListTaskProjectComponent implements OnInit {
 
-  constructor() { }
+  @Input()
+  get color(): string {
+    return this._color;
+  }
+  set color(color: string) {
+    this._color = color !== 'light' && color !== 'dark' ? 'light' : color;
+  }
+  private _color = 'light';
+  constructor(private emp:ChefDeServiceService) {}
+
+
+  get ListProject(): Array<Project> {
+    return this.emp.ListProject;
+  }
+
+  set ListProject(value: Array<Project>) {
+    this.emp.ListProject = value;
+  }
+  get selectedProject(): Project {
+    return this.emp.selectedProject;
+  }
+
+  set selectedProject(value: Project) {
+    this.emp.selectedProject = value;
+  }
+  get ListTask(): Array<Task> {
+    return this.emp.ListTask;
+  }
+
+  set ListTask(value: Array<Task>) {
+    this.emp.ListTask = value;
+  }
 
   ngOnInit(): void {
+    console.log('hnaa'+this.ListTask);
   }
 
 }
