@@ -24,6 +24,7 @@ export class EmployeService {
   private _ListUserTask:Array<Task>;
   private _selectedProject:Project;
   private _selectedTask:Task;
+  private _selectedTask2:Task;
   private _selectedComment:Comment;
   private _ListComment: Array<Comment>;
   private _submitted: boolean;
@@ -61,7 +62,16 @@ export class EmployeService {
   set selectedTask(value: Task) {
     this._selectedTask = value;
   }
+  get selectedTask2(): Task {
+    if (this._selectedTask2 == null) {
+      this._selectedTask2 = new Task();
+    }
+    return this._selectedTask2;
+  }
 
+  set selectedTask2(value: Task) {
+    this._selectedTask2 = value;
+  }
   get ListUserTask(): Array<Task> {
     if (this._ListUserTask == null) {
       this._ListUserTask = new Array<Task>();
@@ -165,7 +175,7 @@ export class EmployeService {
   }
   editPourcentage(): Observable<HttpResponse<Task>> {
     const headers: HttpHeaders = this.initHeaders();
-    return this.http.put<Task>(this.url + 'api/task/hna',this.selectedTask,{ observe: 'response', headers });
+    return this.http.put<Task>(this.url + 'api/task/hna',this.selectedTask2,{ observe: 'response', headers });
   }
   initHeaders(): HttpHeaders {
     let headers = new HttpHeaders();

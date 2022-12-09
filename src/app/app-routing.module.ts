@@ -6,7 +6,6 @@ import { AdminComponent } from './layouts/admin/admin.component';
 import { AuthComponent } from './layouts/auth/auth.component';
 
 // admin views
-import { DashboardComponent } from './views/admin/dashboard/dashboard.component';
 import { MapsComponent } from './views/admin/maps/maps.component';
 import { SettingsComponent } from './views/admin/settings/settings.component';
 import { TablesComponent } from './views/admin/tables/tables.component';
@@ -27,6 +26,8 @@ import {ListUserProjectTaskComponent} from './views/Employe/list-user-project-ta
 import {AddProjectComponent} from './views/Employe/add-project/add-project.component';
 import {ListCommentComponent} from './views/Employe/list-comment/list-comment.component';
 import { ChefComponent } from './layouts/chef/chef.component';
+import {ListProjectServiceComponent} from './views/ChefDeService/list-project-service/list-project-service.component';
+import {ListTaskProjectComponent} from './views/ChefDeService/list-task-project/list-task-project.component';
 
 const routes: Routes = [
   // admin views
@@ -34,11 +35,10 @@ const routes: Routes = [
     path: 'admin',
     component: AdminComponent,
     children: [
-      { path: 'dashboard', component: DashboardComponent },
       { path: 'settings', component: SettingsComponent },
       { path: 'tables', component: TablesComponent },
       { path: 'maps', component: MapsComponent },
-      { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
+      { path: '', redirectTo: 'settings', pathMatch: 'full' },
     ],
   },
   {
@@ -61,11 +61,8 @@ const routes: Routes = [
     path: 'chef',
     component: ChefComponent,
     children: [
-      { path: 'serviceProject', component: ListServiceProjectComponent },
-      { path: 'projectTask', component: ListAllTaskComponent },
-      { path: 'myProject', component: ListUserProjectComponent },
-      { path: 'addProject', component: AddProjectComponent },
-      { path: 'myprojectTask', component: ListUserProjectTaskComponent },
+      { path: 'serviceProject', component: ListProjectServiceComponent },
+      { path: 'projectTask', component: ListTaskProjectComponent },
       { path: 'settings', component: SettingsComponent },
       { path: 'tables', component: TablesComponent },
       { path: 'maps', component: MapsComponent },

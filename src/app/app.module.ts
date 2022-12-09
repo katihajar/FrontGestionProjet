@@ -48,8 +48,6 @@ import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { UserDropdownComponent } from './components/dropdowns/user-dropdown/user-dropdown.component';
 import {FormsModule} from '@angular/forms';
 import {HttpClientModule} from '@angular/common/http';
-import {SidebarEmployComponent} from './components/sidebarEmploy/sidebarEmploy.component';
-import {Dashboard2Component} from './views/Employe/dashboard/dashboard2.component';
 import {EmpComponent} from './layouts/Employe/emp.component';
 import {AdminComponent} from './layouts/admin/admin.component';
 import { ListServiceProjectComponent } from './views/Employe/list-service-project/list-service-project.component';
@@ -61,6 +59,8 @@ import { ListCommentComponent } from './views/Employe/list-comment/list-comment.
 import { ListProjectServiceComponent } from './views/ChefDeService/list-project-service/list-project-service.component';
 import { ListTaskProjectComponent } from './views/ChefDeService/list-task-project/list-task-project.component';
 import { ChefComponent } from './layouts/chef/chef.component';
+import {SidebarChefComponent} from './components/sidebarChef/sidebarChef.component';
+import {SidebarEmployComponent} from './components/sidebarEmploy/sidebarEmploy.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -98,7 +98,6 @@ import { ChefComponent } from './layouts/chef/chef.component';
     LandingComponent,
     ProfileComponent,
     SidebarEmployComponent,
-    Dashboard2Component,
     EmpComponent,
     ListServiceProjectComponent,
     ListAllTaskComponent,
@@ -108,7 +107,8 @@ import { ChefComponent } from './layouts/chef/chef.component';
     ListCommentComponent,
     ListProjectServiceComponent,
     ListTaskProjectComponent,
-    ChefComponent
+    ChefComponent,
+    SidebarChefComponent
   ],
   imports: [BrowserModule, AppRoutingModule, FormsModule,HttpClientModule],
   providers: [],

@@ -1,3 +1,63 @@
+<div style="width: 100%;justify-content: center;align-items: center;" *ngIf="showModal" class="overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none justify-center items-center flex">
+  <div class="relative w-auto my-6 mx-auto max-w-sm lg:w-6/12 justify-center" style="margin-left: 15%">
+    <!--content-->
+    <div class="border-0 rounded-lg shadow-lg relative flex flex-col w-full bg-white outline-none focus:outline-none">
+      <!--header-->
+      <div class="flex items-start justify-between rounded p-2 border-b border-solid " style="background-color: lightgrey">
+        <h3 class="text-3xl font-semibold">
+          Edit State
+        </h3>
+        <button class="p-1 ml-auto bg-transparent border-0 text-black opacity-5 float-right text-3xl leading-none font-semibold outline-none focus:outline-none" (click)="toggleModal()">
+          <span class="bg-transparent text-black opacity-5 h-6 w-6 text-2xl block outline-none focus:outline-none">
+            ×
+          </span>
+        </button>
+      </div>
+      <!--body-->
+      <div class="relative p-6 flex-auto ">
+        <div style="width: 100%">
+          <div
+            class="relative flex flex-col min-w-0 break-words w-full mb-6 shadow-lg 0" style="margin-top: 2%;margin-bottom: 0">
+
+            <div class="flex-auto px-4 lg:px-10 py-10 pt-0">
+
+              <form #monForm1=ngForm>
+                <div class="relative w-full mb-3">
+                  <label
+                    class="block uppercase text-blueGray-600 text-xs font-bold mb-2"
+                    htmlFor="grid-password"
+                  >
+                    State
+                  </label>
+                  <select [(ngModel)]="selectedTask.statutChef"  class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150" id="service" name="service" placeholder="Service">
+                    <option value="accepte">
+                      validat
+                    </option>
+                    <option value="refuse">
+                      refuse
+                    </option>
+                  </select>
+                </div>
+              </form>
+            </div>
+          </div>
+
+        </div>
+      </div>
+      <!--footer-->
+      <div class="flex items-center justify-end p-6 border-t border-solid border-blueGray-200 rounded-b" style="margin-right: 2%">
+        <button style="margin-top: 1%" class="text-red-500 background-transparent font-bold uppercase px-6 py-2 text-sm outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150" type="button" (click)="toggleModal()">
+          Close
+        </button>
+        <button style="margin-top: 1%" class="bg-lightBlue-600 text-white active:bg-emerald-600 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150" type="button" (click)="Validate()">
+          Save Changes
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+<div style="width: 100%;justify-content: center;align-items: center"  *ngIf="showModal" class="opacity-25 fixed inset-0 z-40 bg-black"></div>
+
 <div class="flex flex-wrap mt-4">
     <div class="w-full mb-12 px-4">
       <div
@@ -71,7 +131,7 @@
               >
                 Status Chef
               </th>
-  
+
               <th
                 class="px-6 align-middle border border-solid py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left"
                 [ngClass]="
@@ -88,17 +148,25 @@
                   : 'bg-red-800 text-red-300 border-red-700'
               "
               >pourcentage</th>
+              <th
+                class="px-6 align-middle border border-solid py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left"
+                [ngClass]="
+                color === 'light'
+                  ? 'bg-blueGray-50 text-blueGray-500 border-blueGray-100'
+                  : 'bg-red-800 text-red-300 border-red-700'
+              "
+              >Edit State</th>
             </tr>
             </thead>
             <tbody>
             <tr *ngFor="let task of ListTask">
-              <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">{{task.nom}} </td>
-              <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">{{task.taskDescription}}</td>
+              <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs st p-4">{{task.nom}} </td>
+              <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs st p-4">{{task.taskDescription}}</td>
               <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
                 {{task.dateDebut | date:'d MMM Y'}}
               </td>
               <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
-  
+
                 {{task.dateFin | date:'d MMM Y'}}
               </td>
               <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4"><i *ngIf="task.statutChef=='accepte'" class="fas fa-circle text-teal-500 mr-2"></i> <i *ngIf="task.statutChef=='en attente'"  class="fas fa-circle text-orange-500 mr-2"></i> <i *ngIf="task.statutChef=='refuse'" class="fas fa-circle text-red-500 mr-2"></i>  {{task.statutChef}}</td>
@@ -137,13 +205,20 @@
                 </div>
               </div>
               </td>
+              <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
+                <button *ngIf="task.statutChef != 'accepte' && selectedProject.statutDirect=='accepte' && task.pourcentage==100"
+                        (click)="toggle(task)"
+                        class="bg-orange-500 active:bg-red-700 uppercase text-white font-bold hover:shadow-md shadow text-xs px-4 py-2 rounded "
+                        type="button"
+                >
+                  <i class="fas fa-edit"></i>
+                </button> </td>
             </tr>
             </tbody>
           </table>
         </div>
       </div>
-  
+
     </div>
-  
+
   </div>
-  

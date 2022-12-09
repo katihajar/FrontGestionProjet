@@ -18,7 +18,7 @@
       class="md:block text-left md:pb-2 text-blueGray-600 mr-0 inline-block whitespace-nowrap text-sm uppercase font-bold p-4 px-0"
     >
       <span class="block sm:hidden"> Tailwind Angular </span>
-      <span class="hidden sm:block"> Employe Layout</span>
+      <span class="hidden sm:block"> Chef Service Layout </span>
     </a>
     <!-- User -->
     <ul class="md:hidden items-center flex flex-wrap list-none">
@@ -44,7 +44,7 @@
               [routerLink]="['/emp/serviceProject']"
               class="md:block text-left md:pb-2 text-blueGray-600 mr-0 inline-block whitespace-nowrap text-sm uppercase font-bold p-4 px-0"
             >
-              Employe Layout Pages
+              Chef Service Layout Pages
             </a>
           </div>
           <div class="w-6/12 flex justify-end">
@@ -85,9 +85,9 @@
             [routerLink]="['/chef/serviceProject']"
             class="text-xs uppercase py-3 font-bold block"
             routerLinkActive
-            #chefServiceProject="routerLinkActive"
+            #empTables="routerLinkActive"
             [ngClass]="
-              chefServiceProject.isActive
+              empTables.isActive
                 ? 'text-red-600 hover:text-red-700'
                 : 'text-blueGray-700 hover:text-blueGray-500'
             "
@@ -95,31 +95,10 @@
             <i
               class="fas fa-table mr-2 text-sm"
               [ngClass]="
-                chefServiceProject.isActive ? 'opacity-75' : 'text-blueGray-300'
+                empTables.isActive ? 'opacity-75' : 'text-blueGray-300'
               "
             ></i>
             list of service Project
-          </a>
-        </li>
-        <li class="items-center">
-          <a
-            [routerLink]="['/emp/myProject']"
-            class="text-xs uppercase py-3 font-bold block"
-            routerLinkActive
-            #empMyProject="routerLinkActive"
-            [ngClass]="
-              empMyProject.isActive
-                ? 'text-red-600 hover:text-red-700'
-                : 'text-blueGray-700 hover:text-blueGray-500'
-            "
-          >
-            <i
-              class="fas fa-tv mr-2 text-sm"
-              [ngClass]="
-                empMyProject.isActive ? 'opacity-75' : 'text-blueGray-300'
-              "
-            ></i>
-            My Project
           </a>
         </li>
       </ul>

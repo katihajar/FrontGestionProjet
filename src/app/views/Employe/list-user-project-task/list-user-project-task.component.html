@@ -143,13 +143,13 @@
                   <input
                      name="name"
                     type="range" min="1" max="100"
-                     value="{{selectedTask.pourcentage}}"
-                    [(ngModel)]="selectedTask.pourcentage"
+                     value="{{selectedTask2.pourcentage}}"
+                    [(ngModel)]="selectedTask2.pourcentage"
                     class="slider border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
                     placeholder="Name"
                     required="required"
                   />
-                  <p>Value: {{selectedTask.pourcentage}}</p>
+                  <p>Value: {{selectedTask2.pourcentage}}</p>
                 </div>
          </form>
             </div>
@@ -342,7 +342,7 @@
             >
               <i class="fas fa-search"></i>
             </button></td>
-            <td *ngIf="selectedProject.statutDirect =='accepte'" class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
+            <td *ngIf="selectedProject.statutDirect =='accepte' && task.statutDirect!='accepte'" class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
               <button
                 (click)="toggle(task)"
                 class="bg-orange-500 active:bg-red-700 uppercase text-white font-bold hover:shadow-md shadow text-xs px-4 py-2 rounded "

@@ -6,8 +6,8 @@
   "license": "MIT",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve",
-    "build": "ng build",
+    "start": "set NODE_OPTIONS=--max_old_space_size=8192 & ng serve",
+    "build": "set NODE_OPTIONS=--max_old_space_size=8192 & ng build",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",

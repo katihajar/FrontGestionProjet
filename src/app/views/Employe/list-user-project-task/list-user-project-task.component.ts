@@ -32,7 +32,7 @@ export class ListUserProjectTaskComponent implements OnInit {
     this.modal = !this.modal;
   }
   toggle(t: Task){
-    this.selectedTask = t;
+    this.selectedTask2 = t;
     this.modal = !this.modal;
   }
   get ListUserProject(): Array<Project> {
@@ -71,6 +71,14 @@ export class ListUserProjectTaskComponent implements OnInit {
   set selectedTask(value: Task) {
     this.emp.selectedTask = value;
   }
+  get selectedTask2(): Task {
+
+    return this.emp.selectedTask2;
+  }
+
+  set selectedTask2(value: Task) {
+    this.emp.selectedTask2 = value;
+  }
   public seeComment(t:Task){
     this.selectedTask = t;
     this.emp.getCommentTask(t.id).subscribe(data=>{
@@ -80,7 +88,7 @@ export class ListUserProjectTaskComponent implements OnInit {
     })
   }
   edit(){
-    console.log(this.selectedTask);
+    console.log(this.selectedTask2);
     this.emp.editPourcentage().subscribe(
       data => {
         if (data != null) {

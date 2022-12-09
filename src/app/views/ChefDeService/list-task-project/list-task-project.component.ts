@@ -9,7 +9,7 @@ import { ChefDeServiceService } from 'src/app/controller/service/chefDeService.s
   styleUrls: ['./list-task-project.component.css']
 })
 export class ListTaskProjectComponent implements OnInit {
-
+  showModal = false;
   @Input()
   get color(): string {
     return this._color;
@@ -20,7 +20,9 @@ export class ListTaskProjectComponent implements OnInit {
   private _color = 'light';
   constructor(private emp:ChefDeServiceService) {}
 
-
+  toggleModal(){
+    this.showModal = !this.showModal;
+  }
   get ListProject(): Array<Project> {
     return this.emp.ListProject;
   }
@@ -42,7 +44,34 @@ export class ListTaskProjectComponent implements OnInit {
   set ListTask(value: Array<Task>) {
     this.emp.ListTask = value;
   }
+  get selectedTask(): Task {
 
+    return this.emp.selectedTask;
+  }
+
+  set selectedTask(value: Task) {
+    this.emp.selectedTask = value;
+  }
+  Validate(){
+    console.log(this.selectedTask);
+    this.emp.ValidateTaskStatusChef().subscribe(
+      data => {
+        if (data != null) {
+          // tslint:disable-next-line:no-shadowed-variable
+          this.emp.getTaskProject(this.selectedProject.id).subscribe(data=>{
+            this.ListTask=data.body;
+            this.showModal = !this.showModal;
+            this.selectedTask = new Task();
+            console.log(data);
+          })
+
+        }
+      })
+  }
+  toggle(t: Task){
+    this.selectedTask = t;
+    this.showModal = !this.showModal;
+  }
   ngOnInit(): void {
     console.log('hnaa'+this.ListTask);
   }
