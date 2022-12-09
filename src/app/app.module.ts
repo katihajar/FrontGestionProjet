@@ -57,6 +57,9 @@ import { ListAllTaskComponent } from './views/Employe/list-all-task/list-all-tas
 import { ListUserProjectTaskComponent } from './views/Employe/list-user-project-task/list-user-project-task.component';
 import { ListUserProjectComponent } from './views/Employe/list-user-project/list-user-project.component';
 import { AddProjectComponent } from './views/Employe/add-project/add-project.component';
+import { ListProjectServiceComponent } from './views/ChefDeService/list-project-service/list-project-service.component';
+import { ListTaskProjectComponent } from './views/ChefDeService/list-task-project/list-task-project.component';
+import { ChefComponent } from './layouts/chef/chef.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -100,7 +103,10 @@ import { AddProjectComponent } from './views/Employe/add-project/add-project.com
     ListAllTaskComponent,
     ListUserProjectTaskComponent,
     ListUserProjectComponent,
-    AddProjectComponent
+    AddProjectComponent,
+    ListProjectServiceComponent,
+    ListTaskProjectComponent,
+    ChefComponent
   ],
   imports: [BrowserModule, AppRoutingModule, FormsModule,HttpClientModule],
   providers: [],
