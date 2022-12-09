@@ -63,6 +63,7 @@ const routes: Routes = [
     children: [
       { path: 'serviceProject', component: ListProjectServiceComponent },
       { path: 'projectTask', component: ListTaskProjectComponent },
+      { path: 'listComment', component: ListCommentComponent },
       { path: 'settings', component: SettingsComponent },
       { path: 'tables', component: TablesComponent },
       { path: 'maps', component: MapsComponent },

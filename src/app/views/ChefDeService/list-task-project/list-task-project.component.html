@@ -151,6 +151,14 @@
               <th
                 class="px-6 align-middle border border-solid py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left"
                 [ngClass]="
+              color === 'light'
+                ? 'bg-blueGray-50 text-blueGray-500 border-blueGray-100'
+                : 'bg-red-800 text-red-300 border-red-700'
+            "
+              >see comment</th>
+              <th
+                class="px-6 align-middle border border-solid py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left"
+                [ngClass]="
                 color === 'light'
                   ? 'bg-blueGray-50 text-blueGray-500 border-blueGray-100'
                   : 'bg-red-800 text-red-300 border-red-700'
@@ -205,6 +213,14 @@
                 </div>
               </div>
               </td>
+              <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
+                <button
+                  (click)="seeComment(task)"
+                  class="bg-blueGray-600 active:bg-red-700 uppercase text-white font-bold hover:shadow-md shadow text-xs px-4 py-2 rounded "
+                  type="button"
+                >
+                  <i class="fas fa-search"></i>
+                </button></td>
               <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
                 <button *ngIf="task.statutChef != 'accepte' && selectedProject.statutDirect=='accepte' && task.pourcentage==100"
                         (click)="toggle(task)"
