@@ -26,6 +26,7 @@ import {ListUserProjectComponent} from './views/Employe/list-user-project/list-u
 import {ListUserProjectTaskComponent} from './views/Employe/list-user-project-task/list-user-project-task.component';
 import {AddProjectComponent} from './views/Employe/add-project/add-project.component';
 import {ListCommentComponent} from './views/Employe/list-comment/list-comment.component';
+import { ChefComponent } from './layouts/chef/chef.component';
 
 const routes: Routes = [
   // admin views
@@ -50,6 +51,21 @@ const routes: Routes = [
       { path: 'addProject', component: AddProjectComponent },
       { path: 'myprojectTask', component: ListUserProjectTaskComponent },
       { path: 'listComment', component: ListCommentComponent },
+      { path: 'settings', component: SettingsComponent },
+      { path: 'tables', component: TablesComponent },
+      { path: 'maps', component: MapsComponent },
+      { path: '', redirectTo: 'serviceProject', pathMatch: 'full' },
+    ],
+  },
+  {
+    path: 'chef',
+    component: ChefComponent,
+    children: [
+      { path: 'serviceProject', component: ListServiceProjectComponent },
+      { path: 'projectTask', component: ListAllTaskComponent },
+      { path: 'myProject', component: ListUserProjectComponent },
+      { path: 'addProject', component: AddProjectComponent },
+      { path: 'myprojectTask', component: ListUserProjectTaskComponent },
       { path: 'settings', component: SettingsComponent },
       { path: 'tables', component: TablesComponent },
       { path: 'maps', component: MapsComponent },
