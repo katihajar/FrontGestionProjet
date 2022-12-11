@@ -61,6 +61,9 @@ import { ListTaskProjectComponent } from './views/ChefDeService/list-task-projec
 import { ChefComponent } from './layouts/chef/chef.component';
 import {SidebarChefComponent} from './components/sidebarChef/sidebarChef.component';
 import {SidebarEmployComponent} from './components/sidebarEmploy/sidebarEmploy.component';
+import { ListServiceComponent } from './views/Directeur/list-service/list-service.component';
+import { ListProjectComponent } from './views/Directeur/list-project/list-project.component';
+import { ListTaskComponent } from './views/Directeur/list-task/list-task.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -108,7 +111,10 @@ import {SidebarEmployComponent} from './components/sidebarEmploy/sidebarEmploy.c
     ListProjectServiceComponent,
     ListTaskProjectComponent,
     ChefComponent,
-    SidebarChefComponent
+    SidebarChefComponent,
+    ListServiceComponent,
+    ListProjectComponent,
+    ListTaskComponent
   ],
   imports: [BrowserModule, AppRoutingModule, FormsModule,HttpClientModule],
   providers: [],

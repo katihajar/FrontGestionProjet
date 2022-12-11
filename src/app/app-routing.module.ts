@@ -28,6 +28,9 @@ import {ListCommentComponent} from './views/Employe/list-comment/list-comment.co
 import { ChefComponent } from './layouts/chef/chef.component';
 import {ListProjectServiceComponent} from './views/ChefDeService/list-project-service/list-project-service.component';
 import {ListTaskProjectComponent} from './views/ChefDeService/list-task-project/list-task-project.component';
+import {ListServiceComponent} from './views/Directeur/list-service/list-service.component';
+import {ListProjectComponent} from './views/Directeur/list-project/list-project.component';
+import {ListTaskComponent} from './views/Directeur/list-task/list-task.component';
 
 const routes: Routes = [
   // admin views
@@ -35,10 +38,14 @@ const routes: Routes = [
     path: 'admin',
     component: AdminComponent,
     children: [
+      { path: 'services', component: ListServiceComponent },
+      { path: 'serviceProject', component: ListProjectComponent },
+      { path: 'projectTask', component: ListTaskComponent },
+      { path: 'listComment', component: ListCommentComponent },
       { path: 'settings', component: SettingsComponent },
       { path: 'tables', component: TablesComponent },
       { path: 'maps', component: MapsComponent },
-      { path: '', redirectTo: 'settings', pathMatch: 'full' },
+      { path: '', redirectTo: 'services', pathMatch: 'full' },
     ],
   },
   {
